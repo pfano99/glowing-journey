@@ -1,0 +1,20 @@
+
+//TODO
+
+
+5. Update UI
+7. Add user account
+8. Add authentication
+9. Add delete to delete transaction
+9. Add delete to delete account
+9. Add delete to delete account
+10. Add
+
+
+//DONE
+1. Fix date issue
+2. Make account list clickable
+3. Close modal after submit button clicked
+4. Auto reload transaction list after button submit button clicked
+6. Fix modal
+9. Add update money to float two digits
