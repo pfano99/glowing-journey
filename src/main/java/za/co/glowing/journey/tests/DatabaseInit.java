@@ -36,7 +36,7 @@ public class DatabaseInit implements CommandLineRunner {
 						AccountType.CREDIT,
 						person);
 
-		generateTransaction("new transaction 01", new BigDecimal(780.89), TransactionType.WITHDRAW,
+		generateTransaction("new transaction 01", new BigDecimal(780.89), TransactionType.SPENT,
 						account);
 
 		generateTransaction("transaction 02", new BigDecimal(500.89), TransactionType.TRANSFER,
@@ -45,7 +45,7 @@ public class DatabaseInit implements CommandLineRunner {
 		generateTransaction("transaction 04", new BigDecimal(1200.89), TransactionType.DEPOSIT,
 						account);
 
-		generateTransaction("transaction 03", new BigDecimal(789.89), TransactionType.WITHDRAW,
+		generateTransaction("transaction 03", new BigDecimal(789.89), TransactionType.SPENT,
 						account);
 
 	}
@@ -59,7 +59,7 @@ public class DatabaseInit implements CommandLineRunner {
 	}
 
 	private Person generateUser(String name, String lastName, String email) {
-		Person person = new Person(null, name, lastName, email, null);
+		Person person = new Person(null, name, lastName, email, null,null );
 		return userService.addUser(person);
 	}
 

@@ -1,14 +1,15 @@
-package za.co.glowing.journey.service;
+package za.co.glowing.journey.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import za.co.glowing.journey.model.Expense;
 import za.co.glowing.journey.repository.ExpenseRepository;
+import za.co.glowing.journey.service.ExpenseService;
 
 import java.util.List;
 
 @Service
-public class ExpenseServiceImpl implements ExpenseService{
+public class ExpenseServiceImpl implements ExpenseService {
 
 	@Autowired
 	private ExpenseRepository expenseRepository;

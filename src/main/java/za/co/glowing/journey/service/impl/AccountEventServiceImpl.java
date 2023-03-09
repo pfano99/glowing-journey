@@ -1,10 +1,12 @@
-package za.co.glowing.journey.service;
+package za.co.glowing.journey.service.impl;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import za.co.glowing.journey.model.Account;
 import za.co.glowing.journey.model.AccountEvent;
 import za.co.glowing.journey.repository.AccountEventRepository;
+import za.co.glowing.journey.service.AccountEventService;
+import za.co.glowing.journey.service.AccountService;
 
 import java.util.List;
 

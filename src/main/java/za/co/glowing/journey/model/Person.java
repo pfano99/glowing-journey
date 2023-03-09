@@ -31,4 +31,9 @@ public class Person {
 	@JsonIgnore
 	@OneToMany(mappedBy = "person")
 	private List<Account> account;
+
+	@JsonIgnore
+	@OneToMany(mappedBy = "person")
+	private List<Budget> budgets;
+
 }

@@ -1,9 +1,10 @@
-package za.co.glowing.journey.service;
+package za.co.glowing.journey.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import za.co.glowing.journey.model.Person;
 import za.co.glowing.journey.repository.UserRepository;
+import za.co.glowing.journey.service.UserService;
 
 @Service
 public class UserServiceImpl implements UserService {
