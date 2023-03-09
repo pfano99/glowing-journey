@@ -35,18 +35,16 @@ public class TransactionController {
 
 	@PostMapping("/from/{fromId}/to/{toId}")
 	public ResponseEntity<Transaction> addTransactionTransfer(@RequestBody Transaction transaction,
-																										@PathVariable("fromId") Long fromId,
-																										@PathVariable("toId") Long toId
+																														@PathVariable("fromId") Long fromId,
+																														@PathVariable("toId") Long toId
 	) {
 		return ResponseEntity.ok(transactionService.addTransaction(transaction, fromId, toId));
 	}
 
-	@PutMapping("/{transactionId}")
-	public ResponseEntity<Transaction> updateTransaction(@PathVariable Long transactionId,
-																											 @RequestBody Transaction transaction) {
-		return ResponseEntity.ok(transactionService.updateTransaction(transaction, transactionId));
+	@PutMapping
+	public ResponseEntity<Transaction> updateTransaction(@RequestBody Transaction transaction) {
+		return ResponseEntity.ok(transactionService.updateTransaction(transaction));
 	}
-
 
 	@DeleteMapping("/{transactionId}")
 	public ResponseEntity deleteTransaction(@PathVariable Long transactionId) {

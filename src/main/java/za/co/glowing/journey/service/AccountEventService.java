@@ -12,5 +12,7 @@ public interface AccountEventService {
 
 	AccountEvent addAccountEvent(AccountEvent accountEvent, Long accountId);
 
+	AccountEvent updateAccountEvent(AccountEvent accountEvent);
+
 	void deleteEvent(Long eventId);
 }

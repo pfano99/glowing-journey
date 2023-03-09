@@ -98,8 +98,8 @@ public class TransactionServiceImpl implements TransactionService {
 	}
 
 	@Override
-	public Transaction updateTransaction(Transaction transaction, Long transactionId) {
-		return null;
+	public Transaction updateTransaction(Transaction transaction) {
+		return transactionRepository.save(transaction);
 	}
 
 }

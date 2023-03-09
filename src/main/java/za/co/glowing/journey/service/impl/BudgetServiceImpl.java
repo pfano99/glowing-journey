@@ -42,6 +42,9 @@ public class BudgetServiceImpl implements BudgetService {
 
 	@Override
 	public Budget updateBudget(Budget budget) {
-		return null;
+		if ( budget.getId() != null ) {
+			return budgetRepository.save(budget);
+		}
+		throw new RuntimeException("budget id cannot be null");
 	}
 }

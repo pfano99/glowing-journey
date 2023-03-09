@@ -27,7 +27,6 @@ public class Budget {
 	@Transient
 	private BigDecimal cost;
 
-
 	@JsonIgnore
 	@OneToMany(mappedBy = "budget")
 	private List<BudgetItems> budgetItems;

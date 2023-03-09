@@ -38,6 +38,11 @@ public class AccountEventServiceImpl implements AccountEventService {
 	}
 
 	@Override
+	public AccountEvent updateAccountEvent(AccountEvent accountEvent) {
+		return accountEventRepository.save(accountEvent);
+	}
+
+	@Override
 	public void deleteEvent(Long eventId) {
 		accountEventRepository.deleteById(eventId);
 	}

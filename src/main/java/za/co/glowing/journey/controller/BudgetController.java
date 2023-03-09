@@ -35,6 +35,7 @@ public class BudgetController {
 
 	@PutMapping
 	public ResponseEntity<Budget> updateBudget(@RequestBody Budget budget) {
+		System.out.println("budget.getCost().doubleValue() = " + budget.getCost().doubleValue());
 		return ResponseEntity.ok(budgetService.updateBudget(budget));
 	}
 

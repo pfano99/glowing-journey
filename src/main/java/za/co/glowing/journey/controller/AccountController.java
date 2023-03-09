@@ -34,6 +34,12 @@ public class AccountController {
 		return ResponseEntity.ok().body(accountService.addAccount(account, userId));
 	}
 
+	@PutMapping
+	public ResponseEntity<Account> updateAccount(@RequestBody Account account) {
+		log.info("updating account...");
+		return ResponseEntity.ok().body(accountService.updatedAccount(account));
+	}
+
 	@DeleteMapping("/{accountId}")
 	public ResponseEntity deleteAccount(@PathVariable Long accountId) {
 		accountService.deleteAccount(accountId);

@@ -14,7 +14,7 @@ public interface TransactionService {
 
 	Transaction addTransaction(Transaction transaction, Long accountId);
 
-	Transaction updateTransaction(Transaction transaction, Long transactionId);
+	Transaction updateTransaction(Transaction transaction);
 
 	Transaction addTransaction(Transaction transaction, Long fromAccountId, Long toAccountId);
 
