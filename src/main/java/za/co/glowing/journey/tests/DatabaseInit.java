@@ -1,6 +1,7 @@
 package za.co.glowing.journey.tests;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Configuration;
 import za.co.glowing.journey.model.*;
@@ -14,6 +15,9 @@ import java.time.LocalDate;
 @Configuration
 public class DatabaseInit implements CommandLineRunner {
 
+	@Value("spring.profiles.active")
+	private String currentEnv;
+
 	@Autowired
 	private AccountService accountService;
 
@@ -26,28 +30,30 @@ public class DatabaseInit implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 
-		Person person = generateUser("pfano", "sigama", "pfano@email.com");
+		if ( currentEnv.equals("dev") ) {
 
-		Account account = generateAccount("Savings", new BigDecimal(20000.55), AccountType.SAVING,
-						person);
-		Account account1 = generateAccount("Test account", new BigDecimal(7_000.55), AccountType.CREDIT,
-						person);
-		Account account2 = generateAccount("Credit account", new BigDecimal(56000.75),
-						AccountType.CREDIT,
-						person);
+			Person person = generateUser("pfano", "sigama", "pfano@email.com");
 
-		generateTransaction("new transaction 01", new BigDecimal(780.89), TransactionType.SPENT,
-						account);
+			Account account = generateAccount("Savings", new BigDecimal(20000.55), AccountType.SAVING,
+							person);
+			Account account1 = generateAccount("Test account", new BigDecimal(7_000.55), AccountType.CREDIT,
+							person);
+			Account account2 = generateAccount("Credit account", new BigDecimal(56000.75),
+							AccountType.CREDIT,
+							person);
 
-		generateTransaction("transaction 02", new BigDecimal(500.89), TransactionType.TRANSFER,
-						account);
+			generateTransaction("new transaction 01", new BigDecimal(780.89), TransactionType.SPENT,
+							account);
 
-		generateTransaction("transaction 04", new BigDecimal(1200.89), TransactionType.DEPOSIT,
-						account);
+			generateTransaction("transaction 02", new BigDecimal(500.89), TransactionType.TRANSFER,
+							account);
 
-		generateTransaction("transaction 03", new BigDecimal(789.89), TransactionType.SPENT,
-						account);
+			generateTransaction("transaction 04", new BigDecimal(1200.89), TransactionType.DEPOSIT,
+							account);
 
+			generateTransaction("transaction 03", new BigDecimal(789.89), TransactionType.SPENT,
+							account);
+		}
 	}
 
 	private Account generateAccount(String name, BigDecimal balance, AccountType accountType,
@@ -59,7 +65,7 @@ public class DatabaseInit implements CommandLineRunner {
 	}
 
 	private Person generateUser(String name, String lastName, String email) {
-		Person person = new Person(null, name, lastName, email, null,null );
+		Person person = new Person(null, name, lastName, email, null, null);
 		return userService.addUser(person);
 	}
 
@@ -69,7 +75,5 @@ public class DatabaseInit implements CommandLineRunner {
 						LocalDate.now(), account);
 		return transactionService.addTransaction(transaction);
 	}
-
-//	private A
 
 }
