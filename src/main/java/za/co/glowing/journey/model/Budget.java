@@ -29,7 +29,7 @@ public class Budget {
 
 	@JsonIgnore
 	@OneToMany(mappedBy = "budget")
-	private List<BudgetItems> budgetItems;
+	private List<BudgetItem> budgetItems;
 
 	@ManyToOne
 	@JsonIgnore

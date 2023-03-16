@@ -11,7 +11,7 @@ import java.math.BigDecimal;
 @NoArgsConstructor
 @Data
 @Entity
-public class BudgetItems {
+public class BudgetItem {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
