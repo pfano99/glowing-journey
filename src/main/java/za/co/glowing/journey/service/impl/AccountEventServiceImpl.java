@@ -46,4 +46,11 @@ public class AccountEventServiceImpl implements AccountEventService {
 	public void deleteEvent(Long eventId) {
 		accountEventRepository.deleteById(eventId);
 	}
+
+	@Override
+	public List<AccountEvent> getAllAccounts() {
+		return accountEventRepository.findAll();
+	}
+
+
 }

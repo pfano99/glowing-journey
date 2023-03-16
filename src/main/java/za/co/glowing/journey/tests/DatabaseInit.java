@@ -1,5 +1,6 @@
 package za.co.glowing.journey.tests;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
@@ -13,9 +14,10 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 
 @Configuration
+@Slf4j
 public class DatabaseInit implements CommandLineRunner {
 
-	@Value("spring.profiles.active")
+	@Value("${spring.profiles.active}")
 	private String currentEnv;
 
 	@Autowired
@@ -29,9 +31,8 @@ public class DatabaseInit implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-
 		if ( currentEnv.equals("dev") ) {
-
+			log.info("Initializing dev database.....");
 			Person person = generateUser("pfano", "sigama", "pfano@email.com");
 
 			Account account = generateAccount("Savings", new BigDecimal(20000.55), AccountType.SAVING,
