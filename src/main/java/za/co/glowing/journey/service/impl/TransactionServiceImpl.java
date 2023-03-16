@@ -1,5 +1,6 @@
 package za.co.glowing.journey.service.impl;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -14,6 +15,7 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.List;
 
+@Slf4j
 @Service
 public class TransactionServiceImpl implements TransactionService {
 
@@ -35,7 +37,7 @@ public class TransactionServiceImpl implements TransactionService {
 
 	@Override
 	public Transaction addTransaction(Transaction transaction) {
-		return transactionRepository.save(transaction);
+		return addTransaction(transaction, transaction.getAccount().getId());
 	}
 
 	@Override
@@ -45,11 +47,14 @@ public class TransactionServiceImpl implements TransactionService {
 		BigDecimal newBalance;
 
 		if ( transaction.getTransactionType() != TransactionType.DEPOSIT ) {
+			log.info("Deducting spent amount from total account balance");
 			newBalance = new BigDecimal(account.getBalance().doubleValue() - transaction.getAmount().doubleValue());
 		} else {
 			newBalance = new BigDecimal(account.getBalance().doubleValue() + transaction.getAmount().doubleValue());
 		}
 		account.setBalance(newBalance);
+
+		accountService.updatedAccount(account);
 
 		transaction.setAccount(account);
 
