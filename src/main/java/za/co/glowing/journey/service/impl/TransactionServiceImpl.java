@@ -32,7 +32,7 @@ public class TransactionServiceImpl implements TransactionService {
 
 	@Override
 	public List<Transaction> getAccountTransactions(Long accountId) {
-		return this.transactionRepository.findByAccountId(accountId);
+		return this.transactionRepository.findByAccountIdOrderByTransactionDateDesc(accountId);
 	}
 
 	@Override
